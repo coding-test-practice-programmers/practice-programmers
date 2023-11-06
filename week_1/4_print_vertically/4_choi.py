@@ -3,4 +3,4 @@ str = input()
 for i in str:
     print(i)
 
-print('\n'.join(input()))
+#print('\n'.join(input()))
