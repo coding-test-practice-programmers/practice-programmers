@@ -1,33 +1,49 @@
-function bst() {
-  let p = [0, 0.14, 0.1, 0.05, 0.25];
-  let q = [0.09, 0.05, 0.04, 0.08, 0.2];
-  let w = [[]];
-  let c = [[]];
-  let answer = [];
-  let x = 0;
-  for (let i = 0; i < 5; i++) {
-    w[(i, i)] = q[i];
-    c[(i, i)] = 0;
-  }
-  for (let L = 1; L < 5; L++) {
-    for (let i = 0; i < 5 - L; i++) {
-      let j = i + L;
-      w[(i, j)] = w[(i, j - 1)] + p[j] + q[j];
-      let result;
-      for (let k = i + 1; k <= j; k++) {
-        if (k == i + 1) {
-          result = c[(i, k - 1)] + c[(k, j)] + w[(i, j)];
-        } else if (result > c[(i, k - 1)] + c[(k, j)] + w[(i, j)]) {
-          result = c[(i, k - 1)] + c[(k, j)] + w[(i, j)];
-          c[(i, j)] = result;
-          x = k;
-        }
-        // console.log(i + " " + j + " " + L + " " + k + " ");
+function solution(a, b, c, d) {
+  var answer = 0;
+  let list = [a, b, c, d].sort();
+  let L = list.length;
+  let x = new Set(list);
+  let setlist = [...x];
+  let four = 10 * setlist[1] + setlist[0];
+  let left = 0;
+  if (x.size === 1) {
+    return a * 1111;
+  } else if (x.size === 4) {
+    return list[0];
+  } else if (x.size === 3) {
+    let j = 0;
+    for (let i = 0; i < L; i++) {
+      if (list[i] !== setlist[i]) {
+        left = list[i];
+        console.log(left);
+        x.delete(left);
+        let temp = [...x];
+        return temp[0] * temp[1];
       }
-      answer.push(x);
     }
+  } else if (x.size === 2) {
+    if (list[1] === list[2]) {
+      if (list[1] === setlist[0]) {
+        return Math.pow(10 * setlist[0] + setlist[1], 2);
+      } else if (list[1] === setlist[1]) {
+        return Math.pow(10 * setlist[1] + setlist[0], 2);
+      }
+    } else return (list[0] + list[3]) * (list[3] - list[0]);
   }
-  console.log(c);
-}
+  //     switch(x.size){
+  //         case 1:
+  //             return a*1111
 
-bst();
+  //         case 2:
+
+  //         case 3:
+
+  //             break;
+  //         case 4:
+  //             return list[0]
+  //             break;
+
+  //     }
+
+  return answer;
+}
