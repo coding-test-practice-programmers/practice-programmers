@@ -47,6 +47,5 @@ root
 
 ## 7. 코드 제출 방식
 - problems에 문제제출
-- git commit -m "[성/week(n)_문제제출]"
-  - ex) git commit -m "[choi/week1_문제제출]"
-   
+- 문제제출 commit메시지 예: [choi/week1_문제제출]
+  
